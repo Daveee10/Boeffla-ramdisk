@@ -20,10 +20,12 @@ on init
     mkdir /tmp
     mkdir /dbdata
     mkdir /mnt 0775 root root
-    #mount /tmp /tmp tmpfs   
+    #mount /tmp /tmp tmpfs
+
+    write /proc/sys/kernel/hung_task_timeout_secs 0
 
 on early-fs
-	insmod /lib/modules/vibrator.ko
+    insmod /lib/modules/vibrator.ko
 
     mount ext4 /dev/block/mmcblk0p9 /system ro wait noatime
 
